@@ -23,7 +23,12 @@ public class Settings {
     객체 생성을 팩토리 내에서 관리할 수 있으며, 생성 로직 컨트롤 또한 그 안에서 가능하다.
     */
 
-    // private 접근 제어자 => 생성자를 호출 불가능
+    // private 접근 제어자로 설정하면, 생성자를 호출 불가능
+    /*
+    AdvancedSettings.class :
+    생성자를 private 접근 제어자로 설정하고, Settings를 delegation하여 그 안에서 인스턴스를 변경하게 할 수 있다.
+    굳이 상속을 하지 않더라도, Settings의 기능들을 사용할 수 있어 일종의 장점이라고도 볼 수 있다.
+     */
     private Settings() {}
 
     // 인스턴스를 미리 생성
@@ -34,4 +39,12 @@ public class Settings {
         return SETTINGS;
     }
 
+    /*
+    정적 팩토리 메서드만을 사용하게 하기 위해서는, 생성자를 private으로 만들어야 한다.
+    즉, 상속을 허용하지 않게 된다.
+
+    정적 팩토리 메서드를 사용하면서 생성자를 제거하지 않는 경우도 있다. (ex. ArrayList)
+    List<String> list = new ArrayList<>(); // 특정 인터페이스의 구현체를 생성자를 통해 만들 수 있다.
+    List.of("keesun" "whiteship"); // 정적 팩토리 메서드. 실질적으로 구현체가 ArrayList가 아닐 수 있다.
+    */
 }

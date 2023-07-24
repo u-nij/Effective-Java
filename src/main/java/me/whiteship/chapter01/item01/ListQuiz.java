@@ -17,6 +17,9 @@ public class ListQuiz {
 
         Comparator<Integer> desc = (o1, o2) -> o2 - o1;
 
+        // 내림차순으로 정렬하는 Comparator를 만들고 List<Integer>를 정렬하라.
+        numbers.sort(desc);
+        // 질문1에서 만든 Comparator를 사용해서 오름차순으로 정렬하라
         numbers.sort(desc.reversed());
 
         System.out.println(numbers);

@@ -41,6 +41,16 @@ public class NutritionFacts {
         this.healthy = healthy;
     }
 
+    /*
+    객체 생성이 간단해지는 반면, 일관성(consistency)이 깨진 상태로 객체가 사용될 여지가 있다.
+    (ex. 필수 설정 값이 세팅 안된 채 사용되지 않아 일관성이 깨질 수 있다.)
+
+    두 가지를 혼용해 사용하는 방법
+    필드는 생성자로 넘겨서 받도록 강제성을 주며, 옵셔널한 것을 set을 통해 설정하게 함.
+
+    단점: 붉변(immutable) 객체로 만들기 어렵다.
+    불변 객체로 만들기 위해서는 생성자를 통해 값을 받은 후 Setter 메서드를 없애야 한다.
+    */
     public static void main(String[] args) {
         NutritionFacts cocaCola = new NutritionFacts();
         cocaCola.setServingSize(240);

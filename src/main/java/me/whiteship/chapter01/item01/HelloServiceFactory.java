@@ -88,10 +88,19 @@ public class HelloServiceFactory {
         HelloService helloService = new ChineseHelloService();
         System.out.println(helloService.hello()); // Ni Hao
 
-//        Class<?> aClass = Class.forName("me.whiteship.hello.ChineseHelloService");
-//        Constructor<?> constructor = aClass.getConstructor();
-//        HelloService helloService = (HelloService) constructor.newInstance();
-//        System.out.println(helloService.hello());
+
+        /*
+        “서비스 제공자 인터페이스가 없다면 각 구현체를 인터페이스로 만들 때 리플렉션을 이용해야 한다”
+        위에 주석 처리 후 실행
+        */
+        // 클래스 정보를 직접 참조하지 않는 이상 Class.forName() 으로 시작. 문자열으로 클래스를 만드는 것.
+        Class<?> aClass = Class.forName("me.whiteship.hello.ChineseHelloService"); // 문자열을 통해 Class 인스턴스를 만듦.
+        // 아래와 같은 방법을 통해 클래스 정보를 참조 or 접근 제어자와 관계 없이 값을 변경하거나 메소드를 호출할 수 있다.
+        Constructor<?>[] declaredConstructors = aClass.getDeclaredConstructors();
+        // 클래스라는 레퍼런스를 통해 생성자를 가져와 인스턴스를 만들 수 있다.
+        Constructor<?> constructor = aClass.getConstructor();
+        HelloService helloService1 = (HelloService) constructor.newInstance();
+        System.out.println(helloService1.hello());
     }
 
 }

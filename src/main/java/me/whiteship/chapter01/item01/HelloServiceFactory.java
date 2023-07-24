@@ -69,6 +69,7 @@ public class HelloServiceFactory {
 
         패키징할 때 jar 파일 안에 META-INF 안의 정보가 들어가게 되고, pom.xml에 jar 파일로 하여금 참조할 수 있게 설정.
         */
+        // 서비스 접근 API : ServiceLoader를 통해 실제 서비스를 가져오는 과정
         ServiceLoader<HelloService> loader = ServiceLoader.load(HelloService.class);
         Optional<HelloService> helloServiceOptional = loader.findFirst();
         helloServiceOptional.ifPresent(h -> {

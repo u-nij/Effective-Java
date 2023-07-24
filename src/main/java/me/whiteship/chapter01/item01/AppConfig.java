@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+// 서비스 제공자 등록 API
 public class AppConfig {
 
     @Bean

@@ -1,5 +1,7 @@
 package me.whiteship.chapter01.item01;
 
+// 서비스 제공자 인터페이스(SPI)
+// ChineseHelloService가 서비스 제공자(구현체)
 public interface HelloService {
 
     // 메서드 선언

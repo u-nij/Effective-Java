@@ -3,7 +3,8 @@ package me.whiteship.chapter01.item03.field;
 import java.io.Serializable;
 
 // 코드 3-1 public static final 필드 방식의 싱글턴 (23쪽)
-public class Elvis implements IElvis, Serializable {
+public class Elvis implements IElvis, // 인터페이스 기반으로 Elvis의 대역을 만들어 클라이언트 코드를 테스트할 수 있다.
+                                      Serializable {
 
     /**
      * 싱글톤 오브젝트

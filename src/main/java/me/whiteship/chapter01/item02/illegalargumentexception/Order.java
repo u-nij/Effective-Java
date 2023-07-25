@@ -5,12 +5,15 @@ import java.time.LocalDate;
 public class Order {
 
     public void updateDeliveryDate(LocalDate deliveryDate) {
+                                                        // throws NullPointerException, IllegalArgumentException {
+                                                        // 선언함으로써 클라이언트에게 명시적으로 알려줄 수 있다.
         if (deliveryDate == null) {
             throw new NullPointerException("deliveryDate can't be null");
         }
 
         if (deliveryDate.isBefore(LocalDate.now())) {
             //TODO 과거로 배송 해달라고??
+            // IllegalArgumentException을 던질 때, 생성자에 충분한 정보를 전달해주는 것이 좋다. 최소한 어떤 필드가 왜 잘못되었는지.
             throw new IllegalArgumentException("deliveryDate can't be earlier than " + LocalDate.now());
         }
 

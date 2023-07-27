@@ -15,7 +15,7 @@ public class EnumElvisSerialization {
 
         try (ObjectInput in = new ObjectInputStream(new FileInputStream("elvis.obj"))) {
             Elvis elvis = (Elvis) in.readObject();
-            System.out.println(elvis == Elvis.INSTANCE);
+            System.out.println(elvis == Elvis.INSTANCE); // true // 역직렬화하면, 동일한 인스턴스가 된다.
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

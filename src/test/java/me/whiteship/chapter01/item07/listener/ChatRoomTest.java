@@ -20,14 +20,14 @@ class ChatRoomTest {
 
         chatRoom.sendMessage("hello");
 
-        user1 = null;
+        user1 = null; // 여전히 List<WeakReference<User>>에 남아 있다.
 
         System.gc();
 
         Thread.sleep(5000L);
 
         List<WeakReference<User>> users = chatRoom.getUsers();
-        assertTrue(users.size() == 1);
+        assertTrue(users.size() == 1); // users.size() = 2
     }
 
 }

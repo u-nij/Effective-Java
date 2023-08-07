@@ -7,6 +7,10 @@ import java.util.Objects;
 
 public class ChatRoom {
 
+    /*
+    올바른 WeakReference 사용법이 아니다. 절대로 이렇게 쓰면 안된다.
+    추후에 설명 예정.
+     */
     private List<WeakReference<User>> users;
 
     public ChatRoom() {
@@ -18,6 +22,7 @@ public class ChatRoom {
     }
 
     public void sendMessage(String message) {
+        // 리스트 순회하며 receive() 메서드 호출
         users.forEach(wr -> Objects.requireNonNull(wr.get()).receive(message));
     }
 

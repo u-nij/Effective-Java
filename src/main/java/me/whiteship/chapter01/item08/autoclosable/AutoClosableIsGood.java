@@ -2,7 +2,7 @@ package me.whiteship.chapter01.item08.autoclosable;
 
 import java.io.*;
 
-public class AutoClosableIsGood implements Closeable {
+public class AutoClosableIsGood implements AutoCloseable {
 
     private BufferedReader reader;
 
@@ -14,6 +14,7 @@ public class AutoClosableIsGood implements Closeable {
         }
     }
 
+    // 작업 정리. close 메서드를 구현하면 해당 인터페이스의 구현은 끝난 것.
     @Override
     public void close() {
         try {

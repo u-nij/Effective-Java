@@ -8,6 +8,7 @@ public class Copy {
     // 코드 9-2 자원이 둘 이상이면 try-finally 방식은 너무 지저분하다! (47쪽)
     static void copy(String src, String dst) throws IOException {
         InputStream in = new FileInputStream(src);
+        // 여러 개의 리소스를 닫아야 하는 경우, 코드가 지저분해진다. (outputStream 닫은 후, inputStream 닫음.)
         try {
             OutputStream out = new FileOutputStream(dst);
             try {
@@ -19,7 +20,7 @@ public class Copy {
                 out.close();
             }
         } finally {
-            in.close();
+            in.close(); // out.close()가 실패하더라도, in.close()를 시도할 수 있다.
         }
     }
 

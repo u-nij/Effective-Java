@@ -15,6 +15,16 @@ public class Copy {
             while ((n = in.read(buf)) >= 0)
                 out.write(buf, 0, n);
         } finally {
+            /*
+            예외 처리 코드의 실수를 눈치채지 못한 이유
+            try-catch로 감싸져 있어 안전해 보인다. 하지만, 실제로는 안전하지 않다.
+            out.close();는 IOException을 발생시키는데, 만약 RuntimeExcepption과 같은 다른 예외가 발생할 경우 out.close(); 코드에서 끝나기 때문.
+
+            finally 절의 경우, RuntimeException이 발생하더라도 finally 구문을 실행하기 때문에
+            ./tryfinally.TopLine 클래스처럼 작성해주는 것이 좋다.
+
+            또한, 만약 try-finally 구문으로 작성된 코드가 있다면 모두 고쳐야 한다.
+             */
             try {
                 out.close();
             } catch (IOException e) {

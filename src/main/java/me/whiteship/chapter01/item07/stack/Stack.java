@@ -20,7 +20,7 @@ public class Stack {
 //    public Object pop() {
 //        if (size == 0)
 //            throw new EmptyStackException();
-//        return elements[--size];
+//        return elements[--size]; // 데이터가 사라지지 않고 쌓이기만 한다. 언젠가 배열이 꽉 차 메모리 누수가 생김.
 //    }
 
     /**
@@ -38,7 +38,8 @@ public class Stack {
             throw new EmptyStackException();
         Object result = elements[--size];
         elements[size] = null; // 다 쓴 참조 해제
-        return result;
+        return result; // 해당 오브젝트를 리턴받는 곳에서는 참조할 수 있지만, elements 안에서는 참조 해제됨.
+        // 리턴받은 메서드에서 해당 오브젝트의 사용이 끝나면, 그 메서드의 바운더리에 벗어나기 때문에 생명 주기가 끝나게 된다.
     }
 
     public static void main(String[] args) {

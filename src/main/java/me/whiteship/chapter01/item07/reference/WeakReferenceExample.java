@@ -9,6 +9,10 @@ public class WeakReferenceExample {
         WeakReference<Object> weak = new WeakReference<>(strong);
         strong = null;
 
+        /*
+        메모리 공간의 필요 여부에 상관 없이, GC가 일어날 때 무조건 없어진다.
+         */
+
         System.gc();
         Thread.sleep(3000L);
 

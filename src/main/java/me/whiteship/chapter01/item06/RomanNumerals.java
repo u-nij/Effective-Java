@@ -1,6 +1,9 @@
 package me.whiteship.chapter01.item06;
 import java.util.regex.Pattern;
 
+/*
+정규식같은 경우, 패턴을 컴파일하고 패턴 인스턴스를 만드는 과정이 오래 걸리기 때문에 한 번 만들 때 리소스 비용이 비싸다.
+ */
 // 값비싼 객체를 재사용해 성능을 개선한다. (32쪽)
 public class RomanNumerals {
     // 코드 6-1 성능을 훨씬 더 끌어올릴 수 있다!
@@ -24,6 +27,15 @@ public class RomanNumerals {
             result = isRomanNumeralSlow("MCMLXXVI");
         }
         long end = System.nanoTime();
+        System.out.println(end - start);
+        System.out.println(result);
+
+        start = System.nanoTime();
+        for (int j = 0; j < 100; j++) {
+            //TODO 성능 차이를 확인하려면 xxxSlow 메서드를 xxxFast 메서드로 바꿔 실행해보자.
+            result = isRomanNumeralFast("MCMLXXVI");
+        }
+        end = System.nanoTime();
         System.out.println(end - start);
         System.out.println(result);
     }
